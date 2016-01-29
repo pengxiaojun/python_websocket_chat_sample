@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="mirror.css" media="screen" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
+    <title>Websocket Chat</title>
+    <script type="text/javascript">
+        var wsServer = "ws://127.0.0.1:8877/ws";
+        var ws = new WebSocket(wsServer);
+        ws.onopen = function(evt){
+            $("#message").append("<li>chat connected</li>");
+        };
+        ws.onmessage = function(evt){
+            $("#message").append("<li>" + evt.data + "</li>");
+        };
+        ws.onerror = function(evt){
+            $("#message").append("<li>chat error occurs</li>");
+        };
+        function send_msg(){
+            if (ws){
+                ws.send($("#content").val());
+            }
+        }
+    </script>
+</head>
+<body>
+<form>
+<input id="content" type="text" placeholder="What's in you mind?"/>
+<input id="btnsend" type="button" value="Send" onclick="send_msg();"/><br>
+<div id="message"></div>
+</form>
+</body>
+</html>
