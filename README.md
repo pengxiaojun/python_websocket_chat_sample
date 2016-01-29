@@ -2,10 +2,10 @@
 python ECHO websocket chat sample. It is very simple, easy.
 
 # Prerequisite
-> python3.4  - asyncio
-aiohttp - websocket implementation
-Browers support websocket
-jquery
+1. > python3.4  - asyncio
+2. aiohttp - websocket implementation
+3. Browers support websocket
+4. jquery
 
 # More
 Just read the source code to know more about it!
